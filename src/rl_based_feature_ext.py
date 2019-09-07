@@ -24,9 +24,6 @@
 
 """__modified__ : Kumar Shubham @ IIIT Bangalore"""
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 from scipy import misc
 import tensorflow as tf
@@ -158,7 +155,7 @@ with faceDetectGraph.as_default():
 faceNetGraph = tf.Graph()
 with faceNetGraph.as_default():
     sess = tf.Session()
-    facenet.load_model(model,sessToLoad=sess)
+    facenet.load_model(model,sess_to_load=sess)
 
     
         # Load the model
@@ -223,3 +220,4 @@ def getObjectList(imgRgbMatList,threshold=0.5):
 
 if __name__=="__main__":
     #main()
+    pass
