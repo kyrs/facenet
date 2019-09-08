@@ -36,7 +36,8 @@ import facenet
 import align.detect_face
 import json
 from os import listdir
-from os.path import isfile, join
+import cv2
+from sklearn.metrics.pairwise import cosine_similarity
 
 def load_and_align_data(image_paths, image_size, margin, gpu_memory_fraction):
 
@@ -216,8 +217,16 @@ def getObjectList(imgRgbMatList,threshold=0.5):
         print ("no face found")
         return None
         
-
-
+def main():
+    ## file for testing the script on sample image
+    array_list = []
+    img_path = ["/home/shubham/IIIT/glow/demo/test/smile.png","/home/shubham/IIIT/glow/demo/test/img.png","/home/shubham/IIIT/glow/demo/test/dec.png"]
+    for path in img_path:
+        data = cv2.imread(path)
+        rgbImage = cv2.cvtColor(data, cv2.COLOR_BGR2RGB)
+        array_list.append(rgbImage)
+    emb = getObjectList(array_list)
+    print (cosine_similarity(emb,emb))
 if __name__=="__main__":
-    #main()
+    main()
     pass
