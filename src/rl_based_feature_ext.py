@@ -217,6 +217,11 @@ def getObjectList(imgRgbMatList,threshold=0.5):
         print ("no face found")
         return None
         
+
+def face_compare(imgObj1,imgObj2):
+    ## function to compare the embedding of the facenet for two image object 
+    emb = getObjectList([imgObj1,imgObj2])
+    return cosine_similarity(emb,emb)
 def main():
     ## file for testing the script on sample image
     array_list = []
